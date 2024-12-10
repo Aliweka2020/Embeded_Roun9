@@ -157,9 +157,9 @@ int main(void)
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
-  ee:	2f e7       	ldi	r18, 0x7F	; 127
-  f0:	8a e1       	ldi	r24, 0x1A	; 26
-  f2:	96 e0       	ldi	r25, 0x06	; 6
+  ee:	2f ef       	ldi	r18, 0xFF	; 255
+  f0:	83 ed       	ldi	r24, 0xD3	; 211
+  f2:	90 e3       	ldi	r25, 0x30	; 48
   f4:	21 50       	subi	r18, 0x01	; 1
   f6:	80 40       	sbci	r24, 0x00	; 0
   f8:	90 40       	sbci	r25, 0x00	; 0
@@ -171,9 +171,9 @@ int main(void)
  100:	80 e6       	ldi	r24, 0x60	; 96
  102:	90 e0       	ldi	r25, 0x00	; 0
  104:	0e 94 b2 00 	call	0x164	; 0x164 <LED_OFF>
- 108:	2f e7       	ldi	r18, 0x7F	; 127
- 10a:	8a e1       	ldi	r24, 0x1A	; 26
- 10c:	96 e0       	ldi	r25, 0x06	; 6
+ 108:	2f ef       	ldi	r18, 0xFF	; 255
+ 10a:	83 ed       	ldi	r24, 0xD3	; 211
+ 10c:	90 e3       	ldi	r25, 0x30	; 48
  10e:	21 50       	subi	r18, 0x01	; 1
  110:	80 40       	sbci	r24, 0x00	; 0
  112:	90 40       	sbci	r25, 0x00	; 0

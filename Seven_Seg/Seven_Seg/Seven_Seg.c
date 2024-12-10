@@ -8,20 +8,32 @@
 #define F_CPU 8000000UL
 #include <avr/io.h>
 #include <util/delay.h>
+#include <avr/interrupt.h>
+int i ;
+ISR(TIMER0_OVF_vect)
+{
+	 Seg_print99(i);
+}
 void Seg_print99(int num)
 {
 	PORTB |= (1<<4);
 	PORTB &=~(1<<5);
 	
 	PORTB = (PORTB & 0xF0) | (num%10);
-	_delay_ms(50);
+	_delay_ms(10);
 	PORTB |= (1<<5);
 	PORTB &=~(1<<4);
 	PORTB = (PORTB & 0xF0) | (num/10);
-	_delay_ms(50);
+	_delay_ms(10);
 }
 int main(void)
 {
+	TCCR0 |= (1<<CS00) | (1<<CS02) ; //Normal Mode 1024 prescalar
+	TIMSK |=(1<<TOIE0);  //enable interrupt when overflow occur
+	TCNT0 = 0;
+	sei();
+	
+	
 	DDRB = 0xFF;
 	DDRD = 0xFF;
 	DDRC = 0xFF;
@@ -30,9 +42,9 @@ int main(void)
     {
 		
 		
-		for (int i =0 ; i<100; i ++)
+		for ( i =0 ; i<100; i ++)
 		{
-			Seg_print99 (i);
+			//Seg_print99 (i);
 			_delay_ms(1000);
 		}
 		

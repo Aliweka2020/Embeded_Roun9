@@ -4,7 +4,7 @@
  * Created: 11/28/2024 1:45:06 PM
  *  Author: aweka
  */ 
-
+#define F_CPU 8000000UL 
 #include <avr/io.h>
 #include "LED.h"
 #include <util/delay.h>
